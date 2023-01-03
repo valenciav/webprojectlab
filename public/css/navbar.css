@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    font-family: Quicksand;
+}
+
+@font-face {
+    font-family: Quicksand;
+    src: url(/font_asset/Quicksand-VariableFont_wght.ttf)
+}
+
+.navbar-left {
+    list-style-type: none;
+    display: inline-flexbox;
+    padding-left: 200px;
+}
+
+#logo {
+    width: auto;
+    height: 50px;
+    z-index: -1;
+    position: absolute;
+    margin-left: 15px;
+}
+
+.navbar-left li {
+    float: left;
+    cursor: pointer;
+    margin: 32px 20px 10px 0px;
+    text-decoration: none;
+    transition: 1s;
+}
+
+.navigation-bar {
+    width: 100%;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+}
+
+.navbar-left li:hover {
+    margin-top: 25px;
+    font-size: 25px;
+    transition: 1s;
+}
+
+.navbar-left li.right-panel {
+    list-style-type: none;
+    float: right;
+}
