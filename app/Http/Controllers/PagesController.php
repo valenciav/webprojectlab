@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Item_Details;
-use App\Models\maiBoutique;
+use App\Models\itemdetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
@@ -31,18 +30,16 @@ class PagesController extends Controller
     }
     public function Home()
     {
-        $item_details = Item_Details::paginate(8);
-        return view('core_page/home', ['item_details' => $item_details]);
+        $itemdetails = itemdetail::all();
+        return view('core_page/home', ['itemdetails' => $itemdetails]);
     }
-    public function Search(Request $request)
+    public function Search()
     {
-        $searchquery = $request->searchquery;
-        $item_details = Item_Details::where('name', 'LIKE', "%$searchquery%")->paginate(8)->appends(['searchquery' => $searchquery]);
-        return view('core_page/search')->with(compact('item_details'));
+        return view('core_page/search');
     }
-    public function ViewCart()
+    public function Cart()
     {
-        return view('core_page/viewcart');
+        return view('core_page/cart');
     }
     public function History()
     {
@@ -55,20 +52,5 @@ class PagesController extends Controller
     public function additem()
     {
         return view('admin_page.additem');
-    }
-
-    public function editprofile(Request $request)
-    {
-        $id = $request->route('user_id');
-        $user = maiBoutique::where('id', $id)->first();
-        return view('core_page/editprofile')->with(compact('user'));
-    }
-
-    public function editpassword(Request $request)
-    {
-        // $id = Auth::id();
-        $id = $request->route('user_id');
-        $user = maiBoutique::where('id', $id)->first();
-        return view('core_page/editpassword')->with(compact('user'));
     }
 }
